@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="google-signin-client_id"
+      content="879563693802-0jvn4gbasjgdccjqgf55d67vnds8rcrc.apps.googleusercontent.com"
+    />
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <title>Dashboard | User Information</title>
+    <style>
+      .container {
+        width: 50%;
+        margin: 0px auto;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 80vh;
+      }
+
+      .container .link {
+        padding: 8px;
+        background-color: green;
+        display: inline-block;
+        margin-top: 20px;
+        color: white;
+        border-radius: 2px;
+        text-decoration: none;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <a class="link" href="/logout">Logout</a>
+      <h1><%= user.name %></h1>
+      <img src="<%=user.picture %>" alt="" />
+      <a href="/profile">Profile</a>
+    </div>
+    <script>
+      const signOut = () => {
+        var auth2 = gapi.auth2.getAuthInstance();
+
+        auth2.signOut().then(function () {
+          console.log("User signed out.");
+        });
+      };
+    </script>
+  </body>
+</html>
